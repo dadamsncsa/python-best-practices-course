@@ -33,7 +33,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: webpack artifacts
-        path: .
+        path: public
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
     - uses: actions/download-artifact@v2
       with: 
         name: webpack artifacts
-        path: .
+        path: public
     - name: Use Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
