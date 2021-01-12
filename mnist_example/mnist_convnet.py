@@ -70,7 +70,7 @@ def build_model():
 """
 def train_model(model, x_train, y_train):
     batch_size = 128
-    epochs = 15
+    epochs = 5
 
     model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
