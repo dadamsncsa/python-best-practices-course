@@ -1,6 +1,3 @@
-# Taken from the official Keras repository (https://github.com/keras-team/keras-io)
-# which is licensed under the Apache 2.0 license
-
 """
 Title: Simple MNIST convnet
 Author: [fchollet](https://twitter.com/fchollet)
@@ -8,24 +5,24 @@ Date created: 2015/06/19
 Last modified: 2020/04/21
 Description: A simple convnet that achieves ~99% test accuracy on MNIST.
 """
-
-"""
-## Setup
-"""
-
 import numpy as np
 from tensorflow import keras
 from tensorflow.keras import layers
 
-# Model / data parameters
 num_classes = 10
+"""Defines how many possible numbers to classify"""
+
 input_shape = (28, 28, 1)
+"""Defines the shape of the input images, 28x28 with one color channel"""
 
-"""
-## Prepare the data
-"""
+
 def prepare_data():
+    """Load dataset and preprocess data
 
+    Returns:
+        A tuple of pre-processed training data
+
+    """
 
     # the data, split between train and test sets
     (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
@@ -46,10 +43,13 @@ def prepare_data():
     return (x_train, y_train), (x_test, y_test)
 
 
-"""
-## Build the model
-"""
 def build_model():
+    """Create a simple convolutional Sequential model with 7 layers
+
+    Returns:
+        The built model
+
+    """
     model = keras.Sequential(
         [
             keras.Input(shape=input_shape),
@@ -65,22 +65,40 @@ def build_model():
 
     model.summary()
     return model
-"""
-## Train the model
-"""
+
+
 def train_model(model, x_train, y_train):
+    """Train a model with specified training data
+
+    Args:
+        model: A keras Model
+        x_train: MNIST images training set
+        y_train: MNIST image labels training set
+
+    Returns:
+        A trained model
+
+    """
     batch_size = 128
     epochs = 5
 
-    model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+    model.compile(
+        loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"]
+    )
 
-    model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
+    model.fit(
+        x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1
+    )
     return model
 
-"""
-## Evaluate the trained model
-"""
+
 def evaluate_model(model, x_test, y_test):
+    """Evaluate a given model and return the score
+
+    Returns:
+        A tuple containing the loss and accuracy
+
+    """
     score = model.evaluate(x_test, y_test, verbose=0)
     print("Test loss:", score[0])
     print("Test accuracy:", score[1])
