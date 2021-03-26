@@ -9,4 +9,4 @@ class TestForFiles():
         assert os.path.isfile(".gitignore")
     
     def test_for_readme(self):
-        assert os.path.isfile("Readme.md")
+        assert os.path.isfile("README.md")
