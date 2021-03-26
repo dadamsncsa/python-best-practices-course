@@ -3,4 +3,4 @@ import pytest
 
 class TestForFiles():
     def test_for_license(self):
-        assert True
+        assert os.path.isfile("LICENSE")
