@@ -38,3 +38,9 @@ def test_model_score():
     score = evaluate_model(x_test, y_test)
     # test if accuracy was greater than 90%
     assert score[1] >= .9
+    
+def test_classify_image():
+    (x_train, y_train), (x_test, y_test) = prepare_data()
+    model = MNISTModel()
+    assert model.classify_image(x_test[0]) == 9
+        
