@@ -59,14 +59,14 @@ class MNISTModel:
         print("Test accuracy:", score[1])
         return score
     
-    def classify_images(self, images):
-        """Make predictions on test images
+    def classify_images(self, image):
+        """Make predictions on what the label is for a given image
 
         Returns:
-            A list containing the labels of each image
+            A label integer which the image most likely belongs to
 
         """
         
         probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
-        predictions = probability_model.predict(test_images)
-        return predictions
+        predictions = probability_model.predict(np.array([image]))
+        return np.argmax(predictions[0])
