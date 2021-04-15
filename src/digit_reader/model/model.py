@@ -59,7 +59,7 @@ class MNISTModel:
         print("Test accuracy:", score[1])
         return score
     
-    def classify_images(self, image):
+    def classify_image(self, image):
         """Make predictions on what the label is for a given image
 
         Returns:
