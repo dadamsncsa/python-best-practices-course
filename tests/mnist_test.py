@@ -42,5 +42,7 @@ def test_model_score():
 def test_classify_image():
     (x_train, y_train), (x_test, y_test) = prepare_data()
     model = MNISTModel()
-    assert model.classify_image(x_test[0]) == 9
-        
+    model.train_model(x_train, y_train, epochs=2)
+    assert model.classify_image(x_test[0]) == 7
+
+    
