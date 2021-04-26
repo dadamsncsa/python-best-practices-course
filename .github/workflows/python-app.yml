@@ -30,7 +30,9 @@ jobs:
  #     run: |
  #       conda env update --file requirements.txt --name base
       run: |
-        conda install pytest
+        python -m pip install --upgrade pip
+        pip install pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: run the tests
       run: pytest -v
 
