@@ -67,6 +67,6 @@ class MNISTModel:
 
         """
         
-        probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
+        probability_model = keras.Sequential([self.model, keras.layers.Softmax()])
         predictions = probability_model.predict(np.array([image]))
         return np.argmax(predictions[0])
